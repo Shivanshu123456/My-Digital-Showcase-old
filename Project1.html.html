@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        nav {
+            background-color: rgb(222, 213, 206);
+            color: rgb(151, 70, 70);
+            height: 75px;
+            font-size: 23px;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+        }
+        nav ul {
+            list-style-type: none;
+        }
+        .gamecontainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            position: relative; /* For absolute positioning of the reset button */
+        }
+        .container {
+            display: grid;
+            grid-template-rows: repeat(3, 10vw);
+            grid-template-columns: repeat(3, 10vw);
+            position: relative;
+        }
+        .container div {
+            border: 2px solid black;
+            font-size: 8vw;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container div:hover {
+            background-color: blueviolet;
+        }
+        .gameinfo {
+            padding: 0 34px;
+        }
+        .reset {
+            margin: 10px; /* Add some margin for better spacing */
+            position: absolute;
+            top: 10px; /* Adjust as needed */
+            right: 10px; /* Adjust as needed */
+            background-color: #007bff; /* Button background color */
+            color: #fff; /* Button text color */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            padding: 10px 20px; /* Button padding */
+            font-size: 16px; /* Button font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s; /* Transition for hover effect */
+        }
+        .reset:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+        }
+        .line {
+            background-color: black;
+            height: 5px; /* Thicker line */
+            position: absolute;
+            transform-origin: center; /* Center rotation point */
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>MyTicTacToe.com</li>
+        </ul>
+    </nav>
+    <div class="gamecontainer">
+        <div class="line"></div>
+        <div class="container">
+            <div class="box"><span class="boxtext"></span></div>
+            <div class="box"><span class="boxtext"></span></div>
+            <div class="box"><span class="boxtext"></span></div>
+            <div class="box"><span class="boxtext"></span></div>
+            <div class="box"><span class="boxtext"></span></div>
+            <div class="box"><span class="boxtext"></span></div>
+            <div class="box"><span class="boxtext"></span></div>
+            <div class="box"><span class="boxtext"></span></div>
+            <div class="box"><span class="boxtext"></span></div>
+        </div>
+        <button class="reset">Reset Game</button> <!-- Moved the reset button here -->
+    </div>
+    <div class="gameinfo">
+        <h1>Welcome to Tic Tac Toe</h1>
+        <div>
+            <span class="info">Turn for X</span>
+        </div>
+        <div class="imgbox">
+            <img src="excited.gif" alt="">
+        </div>
+    </div>
+    <script>
+        console.log("Welcome to Tic Tac Toe");
+
+        let music = new Audio("music.mp3");
+        let audioturn = new Audio("ting.mp3");
+        let turn = "X";
+        let gameover = false;
+
+        const changeTurn = () => {
+            return turn === "X" ? "0" : "X";
+        };
+
+        const checkWin = () => {
+            let boxtext = document.getElementsByClassName('boxtext');
+            let wins = [
+                [0, 1, 2, 5, 5, 0],  // First row
+                [3, 4, 5, 5, 15, 0], // Second row
+                [6, 7, 8, 5, 25, 0], // Third row
+                [0, 3, 6, -5, 15, 90], // First column
+                [1, 4, 7, 5, 15, 90], // Second column
+                [2, 5, 8, 15, 15, 90], // Third column
+                [0, 4, 8, 5, 15, 45], // Diagonal \
+                [2, 4, 6, 15, 15, 135], // Diagonal /
+            ];
+
+            wins.forEach(e => {
+                if (boxtext[e[0]].innerText === boxtext[e[1]].innerText &&
+                    boxtext[e[1]].innerText === boxtext[e[2]].innerText &&
+                    boxtext[e[0]].innerText !== '') {
+                    
+                    document.querySelector('.info').innerText = boxtext[e[0]].innerText + " won";
+                    gameover = true;
+
+                    // Position the winning line
+                    const line = document.querySelector(".line");
+                    
+                    // Set the width based on the winning condition
+                    if (e[5] === 0 || e[5] === 90) {
+                        line.style.width = "30vw"; // Horizontal or Vertical lines
+                    } else {
+                        line.style.width = "40vw"; // Diagonal lines
+                    }
+                    
+                    line.style.transform = `translate(${(e[3] + e[6]) / 2}vw, ${(e[4] + e[5]) / 2}vw) rotate(${e[5]}deg)`;
+                    line.style.display = "block"; // Show the line
+                }
+            });
+        };
+
+        // Game logic
+        let boxes = document.getElementsByClassName("box");
+        Array.from(boxes).forEach(element => {
+            let boxtext = element.querySelector('.boxtext');
+            element.addEventListener('click', () => {
+                if (boxtext.innerText === '' && !gameover) {
+                    boxtext.innerText = turn;
+                    audioturn.play();
+                    checkWin();
+                    if (!gameover) {
+                        turn = changeTurn();
+                        document.querySelector(".info").innerText = "Turn for " + turn;
+                    }
+                }
+            });
+        });
+
+        let reset = document.querySelector('.reset');
+        if (reset) {
+            reset.addEventListener('click', () => {
+                let boxtext = document.querySelectorAll('.boxtext');
+                Array.from(boxtext).forEach(element => {
+                    element.innerText = "";
+                });
+                turn = 'X';
+                gameover = false;
+                document.querySelector(".info").innerText = "Turn for " + turn;
+
+                // Hide the line when resetting
+                const line = document.querySelector(".line");
+                line.style.display = "none"; // Hide the line
+            });
+        } else {
+            console.error('Reset button not found. Please ensure there is an element with class "reset".');
+        }
+    </script>
+</body>
+</html>
