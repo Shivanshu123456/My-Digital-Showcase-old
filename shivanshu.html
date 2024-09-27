@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Digital Showcase</title>
+<style>
+    *{
+        margin:0;
+        padding:0;
+        font-family: sans-serif;
+    }
+body{
+background-color: rgb(87, 71, 46);
+color:white;
+}
+nav{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 300px;
+    background-color: rgb(23, 63, 63);
+}
+nav ul{
+    display: flex;
+    justify-content: center;
+}
+nav ul li {
+    list-style: none;
+    margin: 0 23px
+}
+nav ul li a{
+    text-decoration: none;
+    color: white;
+
+}
+nav ul li a:hover{
+    color: lavender;
+    font-size: 1.04rem;
+}
+.left{
+    font-size: 1.5rem;
+}
+.firstsection{
+    display: flex;
+    justify-content: space-around;
+    
+}
+.firstsection > div{
+    width: 30%;
+    justify-content: space-around;
+    align-items: center;
+    margin: 140px 0;
+}
+.leftsection{
+    
+    font-size: 1rem;
+    margin:70px;
+}
+.rightsection img{
+    width:45%;
+margin: 90px 400px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    transform: translateX(-80%) translateY(-96%);
+    border-radius:50%;
+}
+.purple{
+    color: rgb(3, 0, 6);
+}
+.text-gray{
+    color: gray;
+}
+#element{
+color: lavender;
+}
+.secondsection{
+    max-width: 80vw;
+    margin: auto;
+    height: 80vh;
+}
+.secondsection h1{
+    font-size: 1.5rem;
+    
+}
+.secondsection.box{
+    background-color: rgb(234, 19, 19);
+    width: 76vw;
+    height: 2px;
+    margin: 56px 0;
+    
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.secondsection.vertical{
+   height: 93px;
+   width:1px;
+   background-color: rgb(225, 13, 13);
+  margin: 0 140px;
+
+}
+.image-top{
+    width: 23px;
+    position: relative;
+    top: -32px;
+    left: -9px;
+}
+.vertical-title{
+position: relative;
+top: 75px;
+width: 150px;
+font-size: 20px;
+display: flex;
+justify-content: space-around;
+border-left: 2.5px solid black;
+    height: 100px;
+    margin-left: 20px;
+    
+border-right: 2.5px solid black;
+    height: 100px;
+    margin-right: 20px;
+}
+.vertical-desc{
+position: relative;
+top: 150px;
+color: white;
+width:225px;
+font-size: 20px;
+justify-content: space-around;
+display: flex;
+border-left: 2.5px solid black;
+height: 100px;
+}
+.main hr{
+    border: 0;
+    background: #9c97f1;
+
+    height:1.2px;
+    margin: 40px 84px;
+}
+footer{
+    background-color: rgb(45, 56, 67);
+    height: 233px; ;
+}
+.footer{
+    display: flex;
+   padding: 23px 122px;
+   justify-content: space-between;
+}
+.footer ul{
+    list-style: none;
+}
+.footer >div{
+    width: 123px;
+}
+footer.footer-rights{
+    text-align: center;
+    color: gray;
+    padding: 12px 0;
+}
+.leftsection.btn{
+    padding: 12px;
+    background: #1e2167;
+    color: white;
+    border: 2px solid white;
+    border-radius: 6px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.box{
+    border: 2px solid #333;  /* Border around the box */
+    padding: 20px;           /* Space between the border and content */
+    margin: 20px;            /* Space outside the box */
+    background-color: #1ca93d; /* Background color inside the box */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for a 3D effect */
+}
+.vertical{
+    border-left: 2.5px solid black; /* Thickness and color of the line */
+            height: 100px;               /* Height of the line */
+            margin-left: 20px;           /* Space to the left of the line */
+        justify-content: space-around;
+        display: flex;
+        font-size: 20px;
+        color:rgba(244, 243, 243, 0.98);
+        position: relative;
+        display: flex;
+       
+        }
+        .home-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .home-button:hover {
+            background-color: #0056b3;
+        }
+
+</style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="left">"My Digital Showcase"</div>
+            <div class="right">
+                <ul>
+                  <li><a href="index.html" class="home-button">Go to Introduction</a></li>
+                  <li><a href="about.html" class="home-button">About</a></li>
+                  <li><a href="Skills.html" class="home-button">Skills</a></li>
+                  <li><a href="Project1.html.html"class="home-button">Projects</a></li>
+                  <li><a href="contact.html" class="home-button">Contact Me</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="firstsection">
+            <div class="leftsection">Hi,My name is<span class="purple">
+                 Shivanshu</span> Kumar Tiwari
+                <div>and i am pursuing b.tech in CSE</div>
+                <div>from Ashoka Institute of Technology and management,Varanasi</div>
+                  <!-- Element to contain animated typing -->
+  <span id="element"></span>
+  
+
+  
+
+            </div>
+            <div class="rightsection">
+
+        <img src="C:\Users\Lenovo\OneDrive - SUSTAINOMETRIC\Desktop\portfolio project\sh.jpg" alt="Shivanshu Photo">
+            </div>
+
+        </section>
+        <hr>
+        <section class ="secondsection">
+            <span class="text-gray">What I have done so far</span>
+            <h1>Work Experience</h1>
+            <div class="box">
+                <div class="vertical">
+                <div class="vertical">
+                    Doing internship in motion cut. 
+                    (SEPTEMBER-2024)
+                </div>
+                <div class="vertical">
+                   I have completed my 10th<br> from Kendriya Vidyalaya,<br>BHU Varanasi.
+                </div>
+                
+                <div class="vertical">Also,I have completed <br>
+                    my 12th from KV,BHU<br>
+                     Varanasi.</div>
+                     <div class="vertical">Presently,<br>I am doing<br>
+                    B.tech from AKTU university.</div>
+                
+        </div>
+        </section>
+    </hr>
+    </main>
+    <footer>
+        <div class="footer">
+            <div class="footer-first"></div>
+            <h3>Shivanshu Developer Portfolio</h3>
+    
+            <div class="footer-third"></div>
+    </div>
+    <div class="footer-rights">
+        www.Shivanshuportfolio.com|All rights reserved
+    </div>
+
+    </footer>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <!-- Setup and start animation! -->
+  <script>
+    var typed = new Typed('#element', {
+      strings: ['Web Developer'],
+      typeSpeed: 50,
+    });
+  </script>
+
+</body>
+</html>
